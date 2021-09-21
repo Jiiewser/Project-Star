@@ -8,11 +8,11 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
    wait(1)
    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
-wait(1)
-game:GetService("Players").LocalPlayer.PlayerGui.Interface["hud_Container"].Visible = true
-wait(1)
+wait(2)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Tobias020108Back/YBA-AUT/main/PJ-Godmode"))()
 wait(2)
+game:GetService("Players").LocalPlayer.PlayerGui.Interface["hud_Container"].Visible = true
+wait(1)
 if not workspace:FindFirstChild("Stop") then
     local New = Instance.new("BoolValue", workspace)
     New.Name = "Stop"
