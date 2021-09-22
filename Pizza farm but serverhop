@@ -1,8 +1,6 @@
 if not game:IsLoaded() then
 game.Loaded:Wait()
 end
-while wait(1) do
-game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 wait(2)
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -129,4 +127,3 @@ wait(0.1)
 game.Players.LocalPlayer.PlayerGui.Interface.titleScreen_Container:Destroy()
 wait(0.1)
 game.Lighting.Sky:Destroy()
-end
