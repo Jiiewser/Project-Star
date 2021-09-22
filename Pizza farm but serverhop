@@ -129,3 +129,4 @@ wait(0.1)
 game.Players.LocalPlayer.PlayerGui.Interface.titleScreen_Container:Destroy()
 wait(0.1)
 game.Lighting.Sky:Destroy()
+end
