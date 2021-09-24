@@ -1,0 +1,82 @@
+if not game:IsLoaded() then
+game.Loaded:Wait()
+end
+local VIM = game:GetService("VirtualInputManager")
+
+function PressKey(Key)
+    VIM:SendKeyEvent(true, Enum.KeyCode[Key], false, game)
+end
+
+
+if game.PlaceId == 7484251959 then
+    
+local BL = {"Banana", "Cactus Juice", "Tire", "Orebag", "Cabbage", "Copper Coin"}
+
+game.Workspace.Drops.Active.ChildRemoved:Connect(function()
+    local c = game.Workspace.Drops.Active:GetChildren()
+    local StuffWeWant = {}
+    
+    for _, v in pairs(c) do
+        if not table.find(BL, v.Name) then
+            table.insert(StuffWeWant, v)
+        end
+    end
+    
+    if #StuffWeWant > 0 then
+    print("Theres still stuff")
+    end
+    if #StuffWeWant == 0 then
+    print("NO MORE STUFF")
+    wait(1)
+        local Servers = game.HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/7484251959/servers/Public?sortOrder=Asc&limit=100"))
+          for i,v in pairs(Servers.data) do
+            if v.playing ~= v.maxPlayers then
+               game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, v.id)
+            end
+        end
+    end
+end)
+
+
+_G.Toggle = true
+
+
+if _G.Toggle == true then
+    wait(6)
+    PressKey("One")
+    wait(1)
+    PressKey("Z")
+    wait(0.2)
+coroutine.resume(coroutine.create(function()
+  wait(14)
+  local Servers = game.HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/7484251959/servers/Public?sortOrder=Asc&limit=100"))
+          for i,v in pairs(Servers.data) do
+            if v.playing ~= v.maxPlayers then
+               game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, v.id)
+               wait(1)
+               game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+            end
+        end
+    end))
+end
+
+
+getgenv().hide_character = true;
+getgenv().item_blacklist = {"Banana", "Orebag", "Cactus Juice", "Tire", "Cabbage", "Copper Coin"}; --Case sensitive, wont pickup the items listed
+getgenv().item_farm = true;
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Jiiewser/Project-Star/main/PSItemFarm1"))();
+
+
+while _G.Toggle == true do
+    wait()
+    for _, v in pairs(game.Workspace.Drops.Active:GetChildren()) do
+      if v:IsA("Part") or v:IsA("Tool") or v:IsA("Model") or v:IsA("MeshPart") then
+        if v.Name == "Cursed Stand Arrow" or v.Name == "Gleaming Stand Arrow" or v.Name == "Unusual Stand Arrow" or v.Name == "Stand Arrow" or v.Name == "Rokakaka" or v.Name == "Mysterious Rokakaka" or v.Name == "Stone Mask" or v.Name == "Mysterious Meteorite" then
+          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.DropCenter.CFrame
+            fireproximityprompt(v.ProximityPrompt)
+end
+end
+end
+end
+end
