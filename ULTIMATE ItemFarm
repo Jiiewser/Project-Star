@@ -48,7 +48,7 @@ if _G.Toggle == true then
     PressKey("Z")
     wait(0.2)
 coroutine.resume(coroutine.create(function()
-  wait(14)
+  wait(13)
   local Servers = game.HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/7484251959/servers/Public?sortOrder=Asc&limit=100"))
           for i,v in pairs(Servers.data) do
             if v.playing ~= v.maxPlayers then
